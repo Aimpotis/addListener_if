@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  width: 100%;
+}
+h1 {
+  width : 40%;
+}
+.img{
+  width: 40%;
+}
+
+#num1 {
+  width: 10%;
+  height: 50px;
+}

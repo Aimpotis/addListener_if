@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title> Cat</title>
+<style media="screen">
+  html, body {
+    width: 100%;
+  }
+
+  #num1{
+    margin: 0px 10px 0px 20px;
+  }
+  #cat1, #cat2{
+    width: 40%;
+  }
+  .container {
+    display: flex;
+  }
+  #leftSideBar{
+  width: 30%;
+  }
+  .main{
+    width: 70%;
+  }
+</style>
+</head>
+<body>
+<div class = "container">
+<div id="leftSideBar">
+  <div id="out"> Test it</div>
+<ul id="uList"></ul>
+</div>
+<div id="main"></div>
+
+</div>
+
+<script>
+var cats = [
+  {
+    title: "Gatoula Left",
+    imgURL: "cat_1.jpg",
+    hom: 0,
+    display: "block"
+  },
+  {
+    title: 'Gatoula Right',
+    imgURL: "cat_2.jpg",
+    hom: 0,
+    display: "none"
+  }
+];
+
+
+
+
+
+// Let's loop over the numbers in our array
+for (var i = 0; i < cats.length; i++) {
+
+    // This is the number we're on...
+    var cat = cats[i].title;
+
+    // We're creating a DOM element for the number
+    var list = document.createElement('li');
+    list.textContent = cat;
+
+    var gatoules = cats[i];
+
+    var view = document.createElement('div');
+    var photo = cats[i].imgURL;
+
+    var apo = document.createElement('img')
+    apo.setAttribute("src", photo);
+
+
+    var count = cats[i].hom;
+    var test = document.createElement('div');
+    test.textContent = count;
+
+    apo.addEventListener('click', (function(numCopy, coco) {
+        return function() {
+        (numCopy) +=1;
+        (coco).innerHTML = (numCopy);
+           };
+       })(count,test));
+
+
+    document.getElementById("uList").appendChild(list);
+    document.getElementById('main').appendChild(view).className = "myStyle";
+    document.getElementsByClassName("myStyle")[i].appendChild(test);
+    document.getElementsByClassName("myStyle")[i].appendChild(apo);
+    document.getElementsByClassName("myStyle")[i].style.display = cats[i].display;
+};
+
+
+var lista = document.getElementById('uList');
+lista.getElementsByTagName("LI")[0].addEventListener('click', function(){
+  if (cats[0].display === "block"){
+  cats[0].display = "none";
+  cats[1].display = "block";
+  }
+  else if(cats[0].display === "none" ){
+    cats[0].display = "block";
+    cats[1].display = "none";
+  }
+  else {
+    var haha = "FU";
+  }
+ document.getElementsByClassName("myStyle")[1].style.display = cats[1].display;
+ document.getElementsByClassName("myStyle")[0].style.display = cats[0].display;
+
+
+});
+lista.getElementsByTagName("LI")[1].addEventListener('click', function(){
+  if (cats[1].display === "block"){
+  cats[1].display = "none";
+  cats[0].display = "block";
+  }
+  else if(cats[1].display === "none" ){
+    cats[1].display = "block";
+    cats[0].display = "none";
+  }
+  else {
+    var haha = "FU";
+  }
+ document.getElementsByClassName("myStyle")[1].style.display = cats[1].display;
+ document.getElementsByClassName("myStyle")[0].style.display = cats[0].display;
+
+
+});
+
+
+
+
+  /*
+
+  list.addEventListener('click', (function(tata, x){
+    return function(){
+      if((tata).display === "block"){
+     (tata).display =  "none" ;}
+     else if((tata).display === "none")
+      {(tata).display =  "block" ;}
+      return document.getElementsByClassName("myStyle")[(x)].style.display = gatoules.display;
+  };
+  })(gatoules, i));
+  //.appendChild(test).appendChild(apo);
+  list.addEventListener('click', (function(tata){
+   document.getElementsByClassName("myStyle")[0].style.display = "none";
+  });
+  document.body.appendChild(elem);
+    document.body.appendChild(apo);
+    document.body.appendChild(test);
+    list.addEventListener('click', function(){
+     document.getElementById('out').innerHTML = "Parta";
+    });
+};
+
+
+/*var b = 0;
+
+var cats = [
+  {
+    title: "Gatoula Left",
+    imgURL: "cat_1.jpg"
+  },
+  {
+    title: 'Gatoula Right',
+    imgURL: "cat_2.jpg"
+  }
+];
+
+for (var i =0; i < cats.lenght; i++){
+  var num = cat[i].imgURL;
+  var elem = document.createElement('img');
+  elem.setAttribute("src", num);
+  document.body.appendChild(elem);
+};
+
+/*
+cats[0].addImg = document.getElementById('cat1');
+cats[0].addImg.innerHTML = cats[0].imgURL;
+
+cats[1].addImg = document.getElementById('cat2');
+cats[1].addImg.innerHTML = cats[1].imgURL;
+
+cats[0].addImg.addEventListener('click', function(){
+a += 1;
+return document.getElementById('num1').innerHTML = a ;
+}, false);
+
+
+cats[1].addImg.addEventListener('click', function(){
+b += 1;
+return document.getElementById('num2').innerHTML = b ;
+}, false);
+*/
+</script>
+
+
+</body>
+</html>
