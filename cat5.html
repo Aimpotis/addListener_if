@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title> Cat</title>
+<style media="screen">
+  html, body {
+    width: 100%;
+  }
+  #num1{
+    margin: 0px 10px 0px 20px;
+  }
+  #cat1, #cat2{
+    width: 40%;
+  }
+  .container {
+    display: flex;
+  }
+  #leftSideBar{
+  width: 30%;
+  }
+  .main{
+    width: 70%;
+  }
+</style>
+</head>
+<body>
+<div class = "container">
+<div id="leftSideBar">
+  <div id="out"> Test it</div>
+<ul id="uList"></ul>
+</div>
+<div id="main"></div>
+
+</div>
+
+<script>
+var cats = [
+  {
+    title: "Gatoula Left",
+    imgURL: "cat_1.jpg",
+    hom: 0,
+    display: "block"
+  },
+  {
+    title: 'Gatoula Right',
+    imgURL: "cat_2.jpg",
+    hom: 0,
+    display: "none"
+  }
+];
+
+for (var i = 0; i < cats.length; i++) {
+    var cat = cats[i].title;
+    var list = document.createElement('li');
+    list.textContent = cat;
+    var gatoules = cats[i];
+    var view = document.createElement('div');
+    var photo = cats[i].imgURL;
+    var apo = document.createElement('img')
+    apo.setAttribute("src", photo);
+    var count = cats[i].hom;
+    var test = document.createElement('div');
+    test.textContent = count;
+    apo.addEventListener('click', (function(numCopy, coco) {
+        return function() {
+        (numCopy) +=1;
+        (coco).innerHTML = (numCopy);
+           };
+       })(count,test));
+    document.getElementById("uList").appendChild(list);
+    document.getElementById('main').appendChild(view).className = "myStyle";
+    document.getElementsByClassName("myStyle")[i].appendChild(test);
+    document.getElementsByClassName("myStyle")[i].appendChild(apo);
+    document.getElementsByClassName("myStyle")[i].style.display = cats[i].display;
+};
+
+var lista = document.querySelectorAll('li');
+var divakia = document.querySelectorAll(".myStyle");
+for(var i = 0; i<cats.lenght; i++){
+  lista[i].addEventListener('click', function(){
+      for(var j =0; j < divakia.length; j++){
+        divakia[j].style.display = "none";
+        divakia[i].style.display = "block";
+      }
+  });
+}
+
+</script>
+</body>
+</html>
